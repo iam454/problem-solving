@@ -16,16 +16,14 @@ var leafSimilar = function (root1, root2) {
   let arr2 = [];
 
   function dfs(node, arr) {
-    if (node) {
-      if (node.left === null && node.right === null) {
-        arr.push(node.val);
-      }
-      if (node.left !== null) {
-        dfs(node.left, arr);
-      }
-      if (node.right !== null) {
-        dfs(node.right, arr);
-      }
+    if (node.left === null && node.right === null) {
+      arr.push(node.val);
+    }
+    if (node.left) {
+      dfs(node.left, arr);
+    }
+    if (node.right) {
+      dfs(node.right, arr);
     }
   }
 
