@@ -25,7 +25,7 @@ var goodNodes = function (root) {
     dfs(node.right, max);
   }
 
-  dfs(root, -10000);
+  dfs(root, root.val);
 
   return cnt;
 };
