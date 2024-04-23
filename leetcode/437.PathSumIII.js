@@ -12,16 +12,16 @@
  * @return {number}
  */
 var pathSum = function (root, targetSum) {
-  function dfs(node, curSum, counter) {
+  function dfs(node, sum, counter) {
     if (!node) {
       return;
     }
-    curSum += node.val;
-    if (curSum === targetSum) {
+    sum += node.val;
+    if (sum === targetSum) {
       counter[0] += 1;
     }
-    dfs(node.left, curSum, counter);
-    dfs(node.right, curSum, counter);
+    dfs(node.left, sum, counter);
+    dfs(node.right, sum, counter);
   }
 
   function helper(node) {
