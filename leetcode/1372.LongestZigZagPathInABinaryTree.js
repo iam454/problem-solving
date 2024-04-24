@@ -19,7 +19,6 @@ var longestZigZag = function (root) {
     }
     let l = dfs(node.left, "l");
     let r = dfs(node.right, "r");
-
     ans = Math.max(l, r, ans);
 
     if (prev === "l") {
