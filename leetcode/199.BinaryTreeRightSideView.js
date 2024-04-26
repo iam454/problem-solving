@@ -12,12 +12,12 @@
  */
 var rightSideView = function (root) {
   let ans = [];
-  let q = [];
 
   if (!root) {
     return ans;
   }
 
+  let q = [];
   q.push([root, 0]);
 
   while (q.length) {
@@ -30,7 +30,6 @@ var rightSideView = function (root) {
     if (node.left) {
       q.push([node.left, depth + 1]);
     }
-
     if (node.right) {
       q.push([node.right, depth + 1]);
     }
