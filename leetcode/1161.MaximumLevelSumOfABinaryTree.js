@@ -11,24 +11,26 @@
  * @return {number}
  */
 var maxLevelSum = function (root) {
-  let m = new Map();
+  let sum = new Map();
   let q = [];
   q.push([root, 0]);
 
   while (q.length) {
-    let [node, level] = q.shift();
+    let tmp = q.shift();
+    let node = tmp[0];
+    let depth = tmp[1];
 
-    m.set(level, (m.get(level) || 0) + node.val);
+    sum.set(depth, (sum.get(depth) || 0) + node.val);
 
-    if (node.left) {
-      q.push([node.left, level + 1]);
+    if (node.left !== null) {
+      q.push([node.left, depth + 1]);
     }
-    if (node.right) {
-      q.push([node.right, level + 1]);
+    if (node.right !== null) {
+      q.push([node.right, depth + 1]);
     }
   }
 
-  let arr = Array.from(m.values());
+  let arr = Array.from(sum.values());
   let max = Math.max(...arr);
 
   return arr.indexOf(max) + 1;
