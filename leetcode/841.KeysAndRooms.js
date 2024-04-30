@@ -13,12 +13,13 @@ var canVisitAllRooms = function (rooms) {
     let keys = q.shift();
 
     for (let i = 0; i < keys.length; i++) {
-      if (visited[keys[i]] === 0) {
-        visited[keys[i]] = 1;
-        q.push(rooms[keys[i]]);
+      let key = keys[i];
+      if (visited[key] === 0) {
+        q.push(rooms[key]);
+        visited[key] = 1;
       }
     }
   }
 
-  return !visited.filter((v) => v === 0).length;
+  return visited.every((i) => i === 1);
 };
