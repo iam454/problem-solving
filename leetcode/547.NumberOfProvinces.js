@@ -4,7 +4,7 @@
  */
 var findCircleNum = function (isConnected) {
   let N = isConnected.length;
-  let ans = 0;
+  let cnt = 0;
   let visited = new Array(N).fill(0);
 
   function dfs(node) {
@@ -18,10 +18,10 @@ var findCircleNum = function (isConnected) {
 
   for (let i = 0; i < N; i++) {
     if (visited[i] === 0) {
-      ans += 1;
+      cnt += 1;
       dfs(i);
     }
   }
 
-  return ans;
+  return cnt;
 };
