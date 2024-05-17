@@ -4,11 +4,7 @@
  * @return {number}
  */
 var uniquePaths = function (m, n) {
-  let board = [];
-
-  for (let i = 0; i < m; i++) {
-    board[i] = new Array(n).fill(1);
-  }
+  let board = Array.from({ length: m }, () => new Array(n).fill(1));
 
   for (let i = 1; i < m; i++) {
     for (let j = 1; j < n; j++) {
