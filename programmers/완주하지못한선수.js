@@ -1,10 +1,18 @@
 function solution(participant, completion) {
-  participant.sort();
-  completion.sort();
+  let map = new Map();
 
-  for (let i = 0; i < participant.length; i++) {
-    if (participant[i] !== completion[i]) {
-      return participant[i];
+  participant.forEach((p) => {
+    map.set(p, (map.get(p) || 0) + 1);
+  });
+
+  completion.forEach((c) => {
+    map.set(c, map.get(c) - 1);
+    if (map.get(c) === 0) {
+      map.delete(c);
     }
-  }
+  });
+
+  let ans = [...map.keys()];
+
+  return ans[0];
 }
