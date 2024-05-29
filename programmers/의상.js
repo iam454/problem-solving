@@ -1,19 +1,14 @@
 function solution(clothes) {
   let answer = 1;
-  let types = {};
+  let map = new Map();
 
   clothes.forEach((cloth) => {
     let [item, type] = cloth;
-
-    if (types[type]) {
-      types[type].push(item);
-    } else {
-      types[type] = [item];
-    }
+    map.set(type, (map.get(type) || 0) + 1);
   });
 
-  for (let item of Object.values(types)) {
-    answer *= item.length + 1;
+  for (let [key, value] of map) {
+    answer *= value + 1;
   }
 
   return answer - 1;
