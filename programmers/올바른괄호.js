@@ -1,16 +1,16 @@
 function solution(s) {
-  let answer = true;
-  let stack = [];
+  let stack = [s[0]];
 
-  for (let i = 0; i < s.length; i++) {
-    if (stack.length) {
-      if (stack[stack.length - 1] === "(" && s[i] === ")") {
+  for (let i = 1; i < s.length; i++) {
+    let now = s[i];
+    if (stack[stack.length - 1] === "(") {
+      if (now === ")") {
         stack.pop();
       } else {
-        stack.push(s[i]);
+        stack.push(now);
       }
     } else {
-      stack.push(s[i]);
+      stack.push(now);
     }
   }
 
