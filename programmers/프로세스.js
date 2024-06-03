@@ -1,16 +1,18 @@
 function solution(priorities, location) {
   let answer = [];
-  let q = priorities.map((p, i) => i);
+  let l = priorities.map((p, i) => i);
 
   while (priorities.length) {
-    let process = priorities.shift();
-    let idx = q.shift();
+    let p = priorities.shift();
+    let i = l.shift();
 
-    if (process < Math.max(...priorities)) {
-      priorities.push(process);
-      q.push(idx);
+    let max = Math.max(...priorities);
+
+    if (p < max) {
+      priorities.push(p);
+      l.push(i);
     } else {
-      answer.push(idx);
+      answer.push(i);
     }
   }
 
