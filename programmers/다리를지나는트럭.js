@@ -3,18 +3,18 @@ function solution(bridge_length, weight, truck_weights) {
   let truck = truck_weights.shift();
   bridge.push(truck);
   bridge.shift();
-  let bridgeSum = truck;
+  let sum = truck;
   let cnt = 1;
 
-  while (bridgeSum > 0) {
+  while (sum > 0) {
     cnt += 1;
     let out = bridge.shift();
-    bridgeSum -= out;
+    sum -= out;
 
-    if (truck_weights.length && bridgeSum + truck_weights[0] <= weight) {
-      let nextTruck = truck_weights.shift();
-      bridgeSum += nextTruck;
-      bridge.push(nextTruck);
+    if (sum + truck_weights[0] <= weight) {
+      let truck = truck_weights.shift();
+      bridge.push(truck);
+      sum += truck;
     } else {
       bridge.push(0);
     }
