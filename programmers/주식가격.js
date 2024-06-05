@@ -5,8 +5,8 @@ function solution(prices) {
 
   for (let i = 0; i < N; i++) {
     while (stack.length && stack[stack.length - 1][1] > prices[i]) {
-      let [pDay, pPrice] = stack.pop();
-      answer[pDay] = i - pDay;
+      let [prevDay, prevPrice] = stack.pop();
+      answer[prevDay] = i - prevDay;
     }
     stack.push([i, prices[i]]);
   }
