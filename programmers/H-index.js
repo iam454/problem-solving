@@ -1,10 +1,10 @@
 function solution(citations) {
-  let answer = 0;
+  let cnt = 0;
   citations.sort((a, b) => b - a);
 
-  while (answer + 1 <= citations[answer]) {
-    answer += 1;
+  while (cnt + 1 <= citations[cnt]) {
+    cnt += 1;
   }
 
-  return answer;
+  return cnt;
 }
