@@ -2,14 +2,16 @@ function solution(sizes) {
   let width = 0;
   let height = 0;
 
-  while (sizes.length) {
-    let size = sizes.shift();
-    let w = Math.max(...size);
-    let h = Math.min(...size);
-
-    width = Math.max(width, w);
-    height = Math.max(height, h);
-  }
+  sizes.forEach((size) => {
+    let [w, h] = size;
+    if (w >= h) {
+      width = Math.max(width, w);
+      height = Math.max(height, h);
+    } else {
+      width = Math.max(width, h);
+      height = Math.max(height, w);
+    }
+  });
 
   return width * height;
 }
