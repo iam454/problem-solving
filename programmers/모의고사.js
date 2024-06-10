@@ -1,35 +1,34 @@
 function solution(answers) {
   let answer = [];
+  let a1 = [1, 2, 3, 4, 5];
+  let a2 = [2, 1, 2, 3, 2, 4, 2, 5];
+  let a3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5];
 
-  let user1 = [1, 2, 3, 4, 5];
-  let user2 = [2, 1, 2, 3, 2, 4, 2, 5];
-  let user3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5];
+  let u1 = 0;
+  let u2 = 0;
+  let u3 = 0;
 
-  let s1 = 0;
-  let s2 = 0;
-  let s3 = 0;
-
-  for (let i = 0; i < answers.length; i++) {
-    if (answers[i] === user1[i % user1.length]) {
-      s1 += 1;
+  answers.forEach((answer, i) => {
+    if (answer === a1[i % 5]) {
+      u1 += 1;
     }
-    if (answers[i] === user2[i % user2.length]) {
-      s2 += 1;
+    if (answer === a2[i % 8]) {
+      u2 += 1;
     }
-    if (answers[i] === user3[i % user3.length]) {
-      s3 += 1;
+    if (answer === a3[i % 10]) {
+      u3 += 1;
     }
-  }
+  });
 
-  let max = Math.max(s1, s2, s3);
+  let max = Math.max(u1, u2, u3);
 
-  if (max === s1) {
+  if (max === u1) {
     answer.push(1);
   }
-  if (max === s2) {
+  if (max === u2) {
     answer.push(2);
   }
-  if (max === s3) {
+  if (max === u3) {
     answer.push(3);
   }
 
