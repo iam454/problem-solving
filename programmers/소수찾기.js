@@ -1,28 +1,29 @@
 function solution(numbers) {
   let answer = [];
-  let list = numbers.split("");
-  let N = list.length;
-  let visited = new Array(N).fill(false);
+  let nums = numbers.split("");
+  let N = nums.length;
+  let visited = new Array(N).fill(0);
 
-  function dfs(n) {
+  function dfs(str) {
     for (let i = 0; i < N; i++) {
-      if (visited[i] === false) {
-        visited[i] = true;
-        dfs(n + list[i]);
-        visited[i] = false;
+      if (visited[i] === 0) {
+        visited[i] = 1;
+        dfs(str + nums[i]);
+        visited[i] = 0;
       }
     }
-    answer.push(+n);
+    answer.push(+str);
   }
+
   dfs("");
 
   let set = [...new Set(answer)];
 
-  return set.filter((i) => isPrime(i)).length;
+  return set.filter((s) => isPrime(s)).length;
 }
 
 function isPrime(n) {
-  if (n <= 1) {
+  if (n < 2) {
     return false;
   }
   for (let i = 2; i * i <= n; i++) {
