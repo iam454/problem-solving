@@ -4,16 +4,14 @@ function solution(name) {
   let move = N - 1;
 
   for (let i = 0; i < N; i++) {
-    let cur = name[i];
-    answer += Math.min(cur.charCodeAt() - 65, 91 - cur.charCodeAt());
+    let cur = name[i].charCodeAt();
+    answer += Math.min(cur - 65, 91 - cur);
 
-    let cnt = i + 1;
-
-    while (cnt < N && name[cnt] === "A") {
-      cnt += 1;
+    let nextIndex = i + 1;
+    while (nextIndex < N && name[nextIndex] === "A") {
+      nextIndex += 1;
     }
-
-    move = Math.min(move, i * 2 + N - cnt, i + (N - cnt) * 2);
+    move = Math.min(move, i * 2 + N - nextIndex, i + (N - nextIndex) * 2);
   }
 
   return answer + move;
