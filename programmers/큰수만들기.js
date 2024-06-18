@@ -1,19 +1,18 @@
 function solution(number, k) {
-  let answer = "";
-  let st = [];
+  let stack = [];
 
   for (let i = 0; i < number.length; i++) {
     let cur = number[i];
 
-    while (k > 0 && st[st.length - 1] < cur) {
-      st.pop();
+    while (k > 0 && stack[stack.length - 1] < cur) {
+      stack.pop();
       k -= 1;
     }
 
-    st.push(cur);
+    stack.push(cur);
   }
 
-  st.splice(st.length - k, k);
+  stack.splice(stack.length - k, k);
 
-  return st.join("");
+  return stack.join("");
 }
