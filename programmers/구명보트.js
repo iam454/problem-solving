@@ -1,13 +1,11 @@
 function solution(people, limit) {
   let answer = 0;
   people.sort((a, b) => a - b);
-  let N = people.length;
   let l = 0;
-  let r = N - 1;
+  let r = people.length - 1;
 
-  while (l < r) {
+  while (l <= r) {
     let sum = people[l] + people[r];
-
     if (sum > limit) {
       r -= 1;
       answer += 1;
@@ -16,10 +14,6 @@ function solution(people, limit) {
       r -= 1;
       answer += 1;
     }
-  }
-
-  if (l === r) {
-    answer += 1;
   }
 
   return answer;
