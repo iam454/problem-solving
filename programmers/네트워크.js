@@ -6,7 +6,7 @@ function solution(n, computers) {
     visited[node] = 1;
 
     for (let i = 0; i < computers[node].length; i++) {
-      if (computers[node][i] === 1 && visited[i] === 0) {
+      if (visited[i] === 0 && computers[node][i] === 1) {
         dfs(i);
       }
     }
