@@ -4,11 +4,11 @@ function solution(rectangle, characterX, characterY, itemX, itemY) {
     board[i] = new Array(103).fill(0);
   }
 
+  let dr = rectangle.map((r) => r.map((i) => i * 2));
   characterX *= 2;
   characterY *= 2;
   itemX *= 2;
   itemY *= 2;
-  let dr = rectangle.map((item) => item.map((i) => i * 2));
 
   dr.forEach((item) => {
     let [x1, y1, x2, y2] = item;
@@ -34,18 +34,18 @@ function solution(rectangle, characterX, characterY, itemX, itemY) {
   let dy = [0, 0, -1, 1];
 
   while (q.length) {
-    let [cx, cy, cp] = q.shift();
+    let [x, y, cnt] = q.shift();
 
-    if (cx === itemX && cy === itemY) {
-      return cp / 2;
+    if (x === itemX && y === itemY) {
+      return cnt / 2;
     }
 
     for (let i = 0; i < 4; i++) {
-      let nx = cx + dx[i];
-      let ny = cy + dy[i];
+      let nx = x + dx[i];
+      let ny = y + dy[i];
 
       if (board[nx][ny] === 1) {
-        q.push([nx, ny, cp + 1]);
+        q.push([nx, ny, cnt + 1]);
         board[nx][ny] = -1;
       }
     }
