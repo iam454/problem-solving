@@ -2,22 +2,22 @@ function solution(n, times) {
   let answer = 0;
   times.sort((a, b) => a - b);
 
-  let s = 1;
-  let e = n * times[times.length - 1];
+  let l = 1;
+  let r = n * times[times.length - 1];
 
-  while (s <= e) {
-    let mid = Math.floor((s + e) / 2);
+  while (l <= r) {
+    let mid = Math.floor((l + r) / 2);
     let cnt = 0;
 
-    for (let time of times) {
-      cnt += Math.floor(mid / time);
+    for (let i = 0; i < times.length; i++) {
+      cnt += Math.floor(mid / times[i]);
     }
 
     if (cnt >= n) {
       answer = mid;
-      e = mid - 1;
+      r = mid - 1;
     } else {
-      s = mid + 1;
+      l = mid + 1;
     }
   }
 
