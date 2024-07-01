@@ -4,6 +4,10 @@
  * @return {string}
  */
 var convert = function (s, numRows) {
+  if (numRows === 1) {
+    return s;
+  }
+
   let ans = new Array(numRows).fill().map(() => []);
 
   let idx = 0;
